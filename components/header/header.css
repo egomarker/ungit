@@ -57,7 +57,7 @@ html {
 .navbar .arrow {
   bottom: 0;
   left: 300px;
-  border-bottom-color: #252833;
+  border-bottom-color: #000000;
 }
 .navbar .version-and-license {
   position: absolute;
