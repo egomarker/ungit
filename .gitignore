@@ -1,18 +1,18 @@
-# Ignore generated folders
+# Ignore generated working folders
 .nyc_output/
 build/
 coverage/
 dist/
 node_modules/
-public/css/
-public/fonts/glyphicons-*
-public/js/
 
-# Ignore compiled files
-components/**/*.bundle.js
+# Runtime browser bundles, stylesheets, and fonts are intentionally tracked so
+# GitHub package installs are directly runnable without an install-time build.
+# Source maps remain local build artifacts because global CSS maps embed the
+# absolute build path.
 components/**/*.bundle.js.map
-components/**/*.css
 components/**/*.css.map
+public/css/*.map
+public/js/*.map
 
 # Ignore potential files
 .vscode/
