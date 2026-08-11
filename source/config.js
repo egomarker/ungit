@@ -138,6 +138,9 @@ const defaultConfig = {
   // Preferred default diff type used. Can be `"textdiff"` or `"sidebysidediff"`.
   diffType: undefined,
 
+  // Preferred color theme. Can be `"system"`, `"dark"`, or `"light"`.
+  theme: 'system',
+
   // Specify whether to Ignore or Show white space diff
   ignoreWhiteSpaceDiff: false,
 
@@ -296,6 +299,8 @@ const argv = yargs
     'diffType',
     'Prefered default diff type used. Can be `"textdiff"` or `"sidebysidediff"`.'
   )
+  .describe('theme', 'Color theme. Can be `"system"`, `"dark"`, or `"light"`.')
+  .choices('theme', ['system', 'dark', 'light'])
   .describe('ignoreWhiteSpaceDiff', 'Specify whether to Ignore or Show white space diff')
   .boolean('ignoreWhiteSpaceDiff')
   .describe(

@@ -61,7 +61,7 @@
       }
 
       &.focused {
-        border-color: #ffffff;
+        border-color: @graph-ref-focus-color;
       }
 
       &.current {
@@ -73,16 +73,16 @@
       }
 
       &.remote {
-        color: #5db4ff;
+        color: @graph-remote-ref-color;
       }
 
       &.tag {
-        color: #eef266;
+        color: @graph-tag-ref-color;
       }
     }
 
     .graphAction {
-      color: #ffffff;
+      color: @graph-action-color;
       cursor: pointer;
       transition: all 0.5s ease 0.2s;
       transition-property: opacity;
@@ -104,51 +104,51 @@
       }
 
       &.push {
-        background: rgba(61, 139, 255, 0.9);
+        background: @graph-push-background;
       }
 
       &.pull {
-        background: rgba(38, 189, 189, 0.9);
+        background: @graph-pull-background;
       }
 
       &.reset {
-        background: rgba(255, 129, 31, 0.9);
+        background: @graph-reset-background;
       }
 
       &.rebase {
-        background: rgba(65, 222, 60, 0.9);
+        background: @graph-rebase-background;
       }
 
       &.squash {
-        background: rgba(100, 60, 222, 0.9);
+        background: @graph-squash-background;
       }
 
       &.move {
-        background: rgba(0, 0, 0, 0.1);
+        background: @graph-move-background;
       }
 
       &.merge {
-        background: rgba(208, 135, 212, 0.9);
+        background: @graph-merge-background;
       }
 
       &.checkout {
-        background: rgba(205, 219, 55, 0.9);
+        background: @graph-checkout-background;
       }
 
       &.delete {
-        background: rgba(214, 77, 56, 0.9);
+        background: @graph-delete-background;
       }
 
       &.cherry-pick {
-        background: rgba(110, 156, 110, 0.9);
+        background: @graph-cherry-pick-background;
       }
 
       &.uncommit {
-        background: rgba(158, 53, 20, 0.9);
+        background: @graph-uncommit-background;
       }
 
       &.revert {
-        background: rgba(179, 135, 43, 0.9);
+        background: @graph-revert-background;
       }
     }
 
@@ -166,10 +166,10 @@
         margin: 0;
         margin-top: 9px;
         -webkit-text-stroke-width: 1px;
-        color: rgba(255, 255, 255, 0.3);
+        color: @graph-control-color;
 
         &:hover {
-          color: rgba(255, 255, 255, 0.8);
+          color: @graph-control-hover-color;
         }
       }
 
@@ -181,10 +181,10 @@
         margin: 0;
         margin-top: 9px;
         -webkit-text-stroke-width: 1px;
-        color: rgba(255, 255, 255, 0.3);
+        color: @graph-control-color;
 
         &:hover {
-          color: rgba(255, 255, 255, 0.8);
+          color: @graph-control-hover-color;
         }
       }
 

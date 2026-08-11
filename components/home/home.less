@@ -1,3 +1,5 @@
+@import 'public/less/variables.less';
+
 .home {
   .nux {
     text-align: center;
@@ -14,16 +16,16 @@
 
     &.path-removed {
       .list-group-item-heading {
-        color: #cf5353;
+        color: @removed-path-color;
       }
     }
 
     .arrow-icon {
-      color: #686868;
+      color: @icon-muted-color;
     }
 
     &:hover .arrow-icon {
-      color: #a5a5a5;
+      color: @icon-hover-color;
     }
   }
 }

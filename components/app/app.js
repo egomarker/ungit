@@ -1,6 +1,7 @@
 const ko = require('knockout');
 const components = require('ungit-components');
 const storage = require('ungit-storage');
+const theme = require('ungit-theme');
 const $ = require('jquery');
 
 components.register('app', (args) => {
@@ -12,9 +13,12 @@ class AppViewModel {
     this.appContainer = appContainer;
     this.server = server;
     this.template = 'app';
+    this.theme = theme;
+    this.header = null;
     if (window.location.search.indexOf('noheader=true') < 0) {
       this.header = components.create('header', { app: this });
     }
+    this.showNoHeaderToolbar = !this.header;
     this.modal = ko.observable(null);
     this.repoList = ko.observableArray(this.getRepoList()); // visitedRepositories is legacy, remove in the next version
     this.repoList.subscribe((newValue) => {

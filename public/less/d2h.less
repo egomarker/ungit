@@ -23,12 +23,12 @@
 }
 
 .d2h-cntx {
-  color: rgba(255, 255, 255, 0.3);
+  color: @diff-muted-color;
 }
 
 .d2h-info {
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.3);
+  color: @diff-muted-color;
 }
 
 .d2h-code-side-emptyplaceholder,
@@ -38,31 +38,31 @@
 
 .d2h-code-linenumber,
 .d2h-code-side-linenumber {
-  background-color: #727a83;
-  border-left: 1px solid rgba(0, 0, 0, 0.34);
-  border-right: 1px solid rgba(0, 0, 0, 0.34);
+  background-color: @diff-linenumber-background;
+  border-left: 1px solid @diff-linenumber-border;
+  border-right: 1px solid @diff-linenumber-border;
 }
 
 .d2h-file-diff .d2h-del.d2h-change,
 .d2h-del {
-  background-color: #e86756;
-  color: #ffffff;
+  background-color: @diff-deletion-background;
+  color: @diff-deletion-color;
 }
 
 .d2h-file-diff .d2h-ins.d2h-change,
 .d2h-ins {
-  background-color: #66f27b;
-  color: #000000;
+  background-color: @diff-insertion-background;
+  color: @diff-insertion-color;
 }
 
 .d2h-code-line del,
 .d2h-code-side-line del {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: @diff-deletion-highlight;
 }
 
 .d2h-code-line ins,
 .d2h-code-side-line ins {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: @diff-insertion-highlight;
 }
 
 .d2h-code-line-ctn {

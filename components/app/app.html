@@ -1,6 +1,17 @@
 <!-- ko component: header -->
 <!-- /ko -->
 
+<!-- ko if: showNoHeaderToolbar -->
+<div class="no-header-toolbar">
+  <select
+    class="form-control theme-select"
+    aria-label="Color theme"
+    title="Color theme"
+    data-bind="options: theme.options, optionsText: 'label', optionsValue: 'value', value: theme.preference"
+  ></select>
+</div>
+<!-- /ko -->
+
 <div class="app">
   <div class="container" data-bind="shown: shown">
     <div class="alert alert-danger" data-bind="visible: gitVersionErrorVisible">

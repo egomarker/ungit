@@ -3,6 +3,7 @@ const _ = require('lodash');
 const moment = require('moment');
 const octicons = require('octicons');
 const components = require('ungit-components');
+const theme = require('ungit-theme');
 const GitNodeViewModel = require('./git-node');
 const GitRefViewModel = require('./git-ref');
 const EdgeViewModel = require('./edge');
@@ -35,7 +36,11 @@ class GraphViewModel extends ComponentRoot {
     );
     this.HEADref = ko.observable();
     this.HEAD = ko.computed(() => (this.HEADref() ? this.HEADref().node() : undefined));
-    this.commitNodeColor = ko.computed(() => (this.HEAD() ? this.HEAD().color() : '#4A4A4A'));
+    this.graphEdgeColor = ko.computed(() => theme.graphEdgeColor());
+    this.graphAccentColor = ko.computed(() => theme.graphAccentColor());
+    this.commitNodeColor = ko.computed(() =>
+      this.HEAD() ? this.HEAD().color() : theme.graphFallbackColor()
+    );
     this.commitNodeEdge = ko.computed(() => {
       if (!this.HEAD() || !this.HEAD().cx() || !this.HEAD().cy()) return;
       return `M 610 68 L ${this.HEAD().cx()} ${this.HEAD().cy()}`;
@@ -283,7 +288,7 @@ class GraphViewModel extends ComponentRoot {
       this.setRemoteTags(event.tags);
     } else if (event.event == 'current-remote-changed') {
       this.currentRemote(event.newRemote);
-    } else if (event.event == 'graph-render') {
+    } else if (event.event == 'graph-render' || event.event === 'theme-changed') {
       this.nodes().forEach((node) => {
         node.render();
       });

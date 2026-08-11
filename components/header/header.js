@@ -10,6 +10,7 @@ components.register('header', (args) => new HeaderViewModel(args.app));
 class HeaderViewModel {
   constructor(app) {
     this.app = app;
+    this.theme = app.theme;
     this.showBackButton = ko.observable(false);
     this.path = ko.observable();
     this.currentVersion = ungit.version;

@@ -20,23 +20,29 @@ const baseDir = path.join(__dirname, '..');
     .map((component) => component.name);
 
   // less
+  const themes = [
+    { name: 'dark', suffix: '' },
+    { name: 'light', suffix: '-light' },
+  ];
   console.log('less:common');
-  await lessFile(
-    path.join(baseDir, 'public/less/styles.less'),
-    path.join(baseDir, 'public/css/styles.css')
+  await Promise.all(
+    themes.map((theme) =>
+      lessFile(
+        path.join(baseDir, 'public/less/styles.less'),
+        path.join(baseDir, `public/css/styles${theme.suffix}.css`),
+        theme.name
+      )
+    )
   );
 
   console.log('less:components');
   await Promise.all(
-    components.map(async (component) => {
+    components.flatMap((component) => {
       const componentPath = path.join(baseDir, `components/${component}/${component}`);
-      try {
-        await fs.access(`${componentPath}.less`);
-      } catch {
-        /* ignore */
-        return;
-      }
-      return lessFile(`${componentPath}.less`, `${componentPath}.css`);
+      if (!fsSync.existsSync(`${componentPath}.less`)) return [];
+      return themes.map((theme) =>
+        lessFile(`${componentPath}.less`, `${componentPath}${theme.suffix}.css`, theme.name)
+      );
     })
   );
 
@@ -52,6 +58,7 @@ const baseDir = path.join(__dirname, '..');
   b.require(path.join(publicSourceDir, 'navigation.js'), { expose: 'ungit-navigation' });
   b.require(path.join(publicSourceDir, 'program-events.js'), { expose: 'ungit-program-events' });
   b.require(path.join(publicSourceDir, 'storage.js'), { expose: 'ungit-storage' });
+  b.require(path.join(publicSourceDir, 'theme.js'), { expose: 'ungit-theme' });
   b.require(path.join(baseDir, 'source/address-parser.js'), { expose: 'ungit-address-parser' });
   b.require('blueimp-md5', { expose: 'blueimp-md5' });
   b.require('diff2html', { expose: 'diff2html' });
@@ -119,10 +126,11 @@ const baseDir = path.join(__dirname, '..');
   );
 })();
 
-async function lessFile(source, destination) {
+async function lessFile(source, destination, theme) {
   const input = await fs.readFile(source, { encoding: 'utf8' });
   const output = await less.render(input, {
     filename: source,
+    globalVars: { 'ungit-theme': theme },
     sourceMap: {
       outputSourceFiles: true,
       sourceMapURL: `${path.basename(destination)}.map`,

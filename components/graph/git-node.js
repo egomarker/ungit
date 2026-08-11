@@ -2,6 +2,7 @@ const $ = require('jquery');
 const ko = require('knockout');
 const components = require('ungit-components');
 const programEvents = require('ungit-program-events');
+const theme = require('ungit-theme');
 const Animateable = require('./animateable');
 const GraphActions = require('./git-graph-actions');
 
@@ -148,7 +149,9 @@ class GitNodeViewModel extends Animateable {
       this.cy(this.aboveNode.cy() + this.aboveNode.commitComponent.element().offsetHeight + 30);
     }
 
-    this.color(this.ideologicalBranch() ? this.ideologicalBranch().color : '#666');
+    this.color(
+      this.ideologicalBranch() ? this.ideologicalBranch().color() : theme.graphFallbackColor()
+    );
     this.animate();
   }
 
