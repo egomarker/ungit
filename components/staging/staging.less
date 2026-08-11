@@ -1,15 +1,15 @@
 @import 'public/less/variables.less';
 
 .staging {
-  background: #643a44;
-  box-shadow: 0 -1px 15px #252833;
-  color: #b8a5a5;
+  background: @staging-background;
+  box-shadow: 0 -1px 15px @app-shadow-color;
+  color: @staging-text;
   z-index: 5;
   position: relative;
 
   .form-control {
     &:disabled {
-      background-color: rgba(64, 36, 43, 0.75);
+      background-color: @staging-disabled-background;
     }
   }
 
@@ -18,7 +18,7 @@
   }
 
   .arrow {
-    border-top-color: #643a44;
+    border-top-color: @staging-background;
     left: (@log-width-small + 45px);
     bottom: -30px;
   }
@@ -34,7 +34,7 @@
 
   .validationError {
     display: none;
-    color: #d6542d;
+    color: @validation-error-color;
     padding: 0.25em;
   }
 
@@ -45,12 +45,12 @@
   .diffContainer {
     margin-top: 0;
     border-radius: 3px;
-    background: rgba(255, 255, 255, 0.1);
+    background: @staging-diff-background;
   }
 
   .discard {
     background: transparent;
-    color: rgba(255, 255, 255, 0.3);
+    color: @staging-action-color;
     border-radius: 3px;
     padding: 3px;
     padding-left: 5px;
@@ -59,14 +59,14 @@
 
     &:focus,
     &:hover {
-      background: #000000;
-      color: rgba(255, 255, 255, 0.9);
+      background: @staging-discard-hover-background;
+      color: @staging-action-hover-color;
     }
   }
 
   .ignore {
     background: transparent;
-    color: rgba(255, 255, 255, 0.3);
+    color: @staging-action-color;
     border-radius: 3px;
     padding: 3px;
     padding-left: 5px;
@@ -76,14 +76,14 @@
 
     &:focus,
     &:hover {
-      background: #5555ff;
-      color: rgba(255, 255, 255, 0.9);
+      background: @staging-ignore-hover-background;
+      color: @staging-action-hover-color;
     }
   }
 
   .patch {
-    background: #279124;
-    color: rgba(255, 255, 255, 0.9);
+    background: @staging-patch-background;
+    color: @staging-action-hover-color;
     border-radius: 3px;
     padding: 3px;
     padding-left: 5px;
@@ -93,8 +93,8 @@
 
     &:focus,
     &:hover {
-      background: #279124;
-      color: rgba(255, 255, 255, 0.9);
+      background: @staging-patch-background;
+      color: @staging-action-hover-color;
     }
   }
 
@@ -112,8 +112,8 @@
 
       &.showingDiffs {
         .name {
-          background: rgba(255, 255, 255, 0.1);
-          color: #000000;
+          background: @staging-active-file-background;
+          color: @staging-active-file-color;
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
         }
@@ -132,7 +132,7 @@
         padding: 3px;
         border: 0;
         border-radius: 3px;
-        color: rgba(255, 255, 255, 0.8);
+        color: @staging-file-color;
       }
 
       .new,
@@ -147,18 +147,18 @@
 
       .new,
       .additions {
-        color: #949494;
+        color: @staging-addition-color;
         vertical-align: middle;
       }
 
       .deleted,
       .deletions {
-        color: #7b7b7b;
+        color: @staging-deletion-color;
         vertical-align: middle;
       }
 
       .conflict {
-        color: #db12c0;
+        color: @staging-conflict-color;
 
         .explanation {
           display: none;
@@ -176,7 +176,7 @@
       }
 
       .markresolved {
-        color: #db12c0;
+        color: @staging-conflict-color;
         cursor: pointer;
 
         .explanation {
@@ -184,8 +184,8 @@
         }
 
         &:hover {
-          background: #a445ed;
-          color: #000000;
+          background: @staging-resolve-hover-background;
+          color: @staging-resolve-hover-color;
           border-radius: 3px;
 
           .explanation {
@@ -195,7 +195,7 @@
       }
 
       .launchmergetool {
-        color: #db55ff;
+        color: @staging-mergetool-color;
         cursor: pointer;
 
         .explanation {
@@ -203,8 +203,8 @@
         }
 
         &:hover {
-          background: #a477ff;
-          color: #000000;
+          background: @staging-mergetool-hover-background;
+          color: @staging-mergetool-hover-color;
           border-radius: 3px;
 
           .explanation {
@@ -240,7 +240,7 @@
 }
 
 .checkmark {
-  color: #ffffff;
+  color: @checkmark-color;
   display: inline-block;
   opacity: 0.3;
   cursor: pointer;

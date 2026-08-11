@@ -32,7 +32,15 @@
       ></button>
     </form>
   </div>
-  <div class="toolbar"><!-- ko component: refreshButton --><!-- /ko --></div>
+  <div class="toolbar">
+    <select
+      class="form-control theme-select"
+      aria-label="Color theme"
+      title="Color theme"
+      data-bind="options: theme.options, optionsText: 'label', optionsValue: 'value', value: theme.preference"
+    ></select>
+    <!-- ko component: refreshButton --><!-- /ko -->
+  </div>
 
   <div class="arrow"></div>
   <div class="version">

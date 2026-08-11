@@ -1,9 +1,11 @@
+@import 'public/less/variables.less';
+
 .commitdiff {
   width: 100%;
 
   .file {
     margin-top: 5px;
-    background: rgba(255, 255, 255, 0.16);
+    background: @commitdiff-file-background;
     border-radius: 3px;
 
     .head {
@@ -12,7 +14,7 @@
       padding: 3px;
       padding-left: 6px;
       padding-right: 6px;
-      color: rgba(255, 255, 255, 0.79);
+      color: @commitdiff-heading-color;
       word-wrap: break-word;
 
       .file-stats {
@@ -21,7 +23,7 @@
         }
 
         span:nth-of-type(1) {
-          color: #9bf3a9;
+          color: @commitdiff-addition-color;
         }
 
         span:nth-of-type(2)::before {
@@ -29,16 +31,16 @@
         }
 
         span:nth-of-type(2) {
-          color: #ec9d93;
+          color: @commitdiff-deletion-color;
         }
       }
     }
 
     .diff {
-      background: rgba(0, 0, 0, 0.11);
+      background: @commitdiff-content-background;
 
       .textDiff {
-        color: rgba(255, 255, 255, 0.3);
+        color: @diff-muted-color;
       }
     }
   }

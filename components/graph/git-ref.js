@@ -1,6 +1,6 @@
 const ko = require('knockout');
-const md5 = require('blueimp-md5');
 const octicons = require('octicons');
+const theme = require('ungit-theme');
 const programEvents = require('ungit-program-events');
 const components = require('ungit-components');
 const Selectable = require('./selectable');
@@ -52,7 +52,7 @@ class RefViewModel extends Selectable {
     this.current = ko.computed(
       () => this.isLocalBranch && this.graph.checkedOutBranch() == this.refName
     );
-    this.color = this._colorFromHashOfString(this.name);
+    this.color = ko.computed(() => this._colorFromHashOfString(this.name));
 
     this.node.subscribe(
       (oldNode) => {
@@ -85,7 +85,7 @@ class RefViewModel extends Selectable {
   }
 
   _colorFromHashOfString(string) {
-    return `#${md5(string).toString().slice(0, 6)}`;
+    return theme.colorForRef(string);
   }
 
   dragStart() {

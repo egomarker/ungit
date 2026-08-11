@@ -26,6 +26,7 @@ var components = require('ungit-components');
 var Server = require('./server');
 var programEvents = require('ungit-program-events');
 var navigation = require('ungit-navigation');
+var theme = require('ungit-theme');
 var adBlocker = require('just-detect-adblock');
 
 // Request animation frame polyfill and init tooltips
@@ -92,6 +93,7 @@ AppContainerViewModel.prototype.templateChooser = function (data) {
 var app, appContainer, server;
 
 exports.start = function () {
+  theme.refreshStylesheets();
   server = new Server();
   appContainer = new AppContainerViewModel();
   ungit.server = server;

@@ -1,6 +1,8 @@
+const theme = require('ungit-theme');
+
 const getEdgeModelWithD = (d, stroke, strokeWidth, strokeDasharray, markerEnd) => ({
   d,
-  stroke: stroke ? stroke : '#4A4A4A',
+  stroke: stroke ? stroke : theme.graphEdgeColor(),
   strokeWidth: strokeWidth ? strokeWidth : '8',
   strokeDasharray: strokeDasharray ? strokeDasharray : '10, 5',
   markerEnd: markerEnd ? markerEnd : '',
@@ -45,7 +47,7 @@ class MergeViewModel extends HoverViewModel {
         headNode.cx(),
         headNode.cy() - 110,
         Math.max(headNode.r(), node.r()),
-        '#252833',
+        theme.graphAccentColor(),
         '#41DE3C',
         '8',
         '10, 5'

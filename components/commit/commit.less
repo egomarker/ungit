@@ -7,12 +7,12 @@
     z-index: 2;
 
     .commit-box {
-      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
-      background: #4b5766;
+      box-shadow: 5px 5px 0 @shadow-strong-color;
+      background: @commit-raised-background;
       left: -5px;
 
       .arrow {
-        border-left-color: #4b5766;
+        border-left-color: @commit-raised-background;
 
         &.shadow {
           display: block;
@@ -30,10 +30,10 @@
       .diff-wrapper {
         margin-bottom: 5px;
         transition: width 0.1s, left 0.05s;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 0 15px @shadow-subtle-color;
 
         .diff-inner {
-          box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 0 @shadow-strong-color;
           padding: 10px;
           padding-top: 0;
         }
@@ -55,7 +55,7 @@
         display: none;
         right: -34px;
         top: 32px;
-        border-left-color: rgba(0, 0, 0, 0.2);
+        border-left-color: @shadow-strong-color;
       }
     }
   }
@@ -83,12 +83,12 @@
         font-family: 'Source Code Pro', monospace;
         white-space: pre-wrap;
         word-wrap: break-word;
-        color: #8f9fa6;
+        color: @commit-secondary-text;
       }
 
       .diff-wrapper {
         margin-top: 10px;
-        background: #4b5766;
+        background: @commit-raised-background;
         border-radius: 3px;
       }
     }

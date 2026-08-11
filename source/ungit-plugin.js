@@ -102,7 +102,17 @@ class UngitPlugin {
             result +
             assureArray(exports.css)
               .map((cssSource) => {
-                return `<link rel="stylesheet" type="text/css" href="${config.rootPath}/plugins/${this.name}/${cssSource}" />`;
+                const lightCssSource = cssSource.replace(/\.css$/, '-light.css');
+                const hasLightTheme =
+                  lightCssSource !== cssSource &&
+                  fsSync.existsSync(path.join(this.path, lightCssSource));
+                if (!hasLightTheme) {
+                  return `<link rel="stylesheet" type="text/css" href="${config.rootPath}/plugins/${this.name}/${cssSource}" />`;
+                }
+                return [
+                  `<link rel="stylesheet" type="text/css" href="${config.rootPath}/plugins/${this.name}/${cssSource}" data-ungit-theme="dark" media="not all" />`,
+                  `<link rel="stylesheet" type="text/css" href="${config.rootPath}/plugins/${this.name}/${lightCssSource}" data-ungit-theme="light" media="not all" />`,
+                ].join('\n');
               })
               .join('\n')
           );

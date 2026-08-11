@@ -2,6 +2,7 @@ const $ = require('jquery');
 const ko = require('knockout');
 const components = require('ungit-components');
 const programEvents = require('ungit-program-events');
+const theme = require('ungit-theme');
 const Animateable = require('./animateable');
 const GraphActions = require('./git-graph-actions');
 
@@ -148,7 +149,9 @@ class GitNodeViewModel extends Animateable {
       this.cy(this.aboveNode.cy() + this.aboveNode.commitComponent.element().offsetHeight + 30);
     }
 
-    this.color(this.ideologicalBranch() ? this.ideologicalBranch().color : '#666');
+    this.color(
+      this.ideologicalBranch() ? this.ideologicalBranch().color() : theme.graphFallbackColor()
+    );
     this.animate();
   }
 
@@ -314,12 +317,13 @@ class GitNodeViewModel extends Animateable {
     return `M ${this.cx() + 30} ${this.cy() - 30} L ${this.cx() - 30} ${this.cy() + 30}`;
   }
 
-  nodeMouseover() {
-    this.nodeIsMousehover(true);
+  nodePointerEnter(data, event) {
+    // Touch-triggered hover inserts commit details and prevents iOS Safari's synthetic click.
+    if (event.pointerType === 'mouse') this.nodeIsMousehover(true);
   }
 
-  nodeMouseout() {
-    this.nodeIsMousehover(false);
+  nodePointerLeave(data, event) {
+    if (event.pointerType === 'mouse') this.nodeIsMousehover(false);
   }
 
   isViewable() {

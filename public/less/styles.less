@@ -29,19 +29,19 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #2b3844;
+  background-color: @scrollbar-track-color;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: @scrollbar-thumb-color;
 }
 
 ::-webkit-scrollbar-button {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: @scrollbar-button-color;
 }
 
 ::-webkit-scrollbar-corner {
-  background-color: black;
+  background-color: @scrollbar-corner-color;
 }
 
 // Matching jQuery-UI autocomplete style to bootstrap dropdown
@@ -91,7 +91,7 @@ div.list-group-item {
 
 .octicon-circled {
   margin-right: 15px;
-  border: 5px solid #686868;
+  border: 5px solid @icon-muted-color;
   border-radius: 100%;
   display: inline-block;
   height: 36px;
