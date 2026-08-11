@@ -314,12 +314,13 @@ class GitNodeViewModel extends Animateable {
     return `M ${this.cx() + 30} ${this.cy() - 30} L ${this.cx() - 30} ${this.cy() + 30}`;
   }
 
-  nodeMouseover() {
-    this.nodeIsMousehover(true);
+  nodePointerEnter(data, event) {
+    // Touch-triggered hover inserts commit details and prevents iOS Safari's synthetic click.
+    if (event.pointerType === 'mouse') this.nodeIsMousehover(true);
   }
 
-  nodeMouseout() {
-    this.nodeIsMousehover(false);
+  nodePointerLeave(data, event) {
+    if (event.pointerType === 'mouse') this.nodeIsMousehover(false);
   }
 
   isViewable() {
